@@ -11,7 +11,7 @@ import {
   Float,
   useGLTF,
 } from "@react-three/drei";
-import { OrbitingCirclesDemo } from "./orbitingCircles";
+import { OrbitingCirclesDemo } from "./orbiting-circles";
 import Loader from "./Loader";
 import { Overlay } from "./Overlay";
 

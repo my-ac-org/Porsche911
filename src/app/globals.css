@@ -59,6 +59,18 @@ body {
   font-style: normal;
 }
 
+/* Clase para recorte diagonal de la primera imagen */
+.clip-diagonal {
+  clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
+}
+
+/* Clase para recorte diagonal inverso */
+.clip-diagonal2 {
+  clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
+}
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
