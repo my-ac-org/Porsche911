@@ -1,7 +1,7 @@
 "use client";
 import * as THREE from "three";
 import { useLayoutEffect, useRef, useState } from "react";
-import { Canvas, applyProps, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   PerformanceMonitor,
   AccumulativeShadows,
@@ -13,7 +13,7 @@ import {
 } from "@react-three/drei";
 import { OrbitingCirclesDemo } from "./orbiting-circles";
 import Loader from "./Loader";
-import { Overlay } from "./Overlay";
+import CarOptions from "./CarOptions";
 
 export default function PorscheWithBackground() {
   const [loading, setLoading] = useState(true);
@@ -31,9 +31,9 @@ export default function PorscheWithBackground() {
             <Loader />
           </div>
         )}
-        <Overlay />
         <Porsche911 setLoading={setLoading} />
       </div>
+      <CarOptions />
     </div>
   );
 }
@@ -47,21 +47,21 @@ function Porsche911({ setLoading }) {
         angle={0.3}
         penumbra={1}
         castShadow
-        intensity={2}
+        intensity={10}
         shadow-bias={-0.0001}
       />
       <ambientLight intensity={3.5} />
       <Porsche
-        scale={2}
-        position={[-0.5, -0.18, 0]}
-        rotation={[0, Math.PI / 5, 0]}
+        scale={230}
+        position={[0.2, -1.2, 0]}
+        rotation={[0.05, Math.PI / 1.7, 0]}
         setLoading={setLoading}
       />
-      <AccumulativeShadows
+      {/* <AccumulativeShadows
         position={[0, -1.16, 0]}
         frames={100}
         alphaTest={0.9}
-        scale={10}
+        scale={20}
       >
         <RandomizedLight
           amount={10}
@@ -69,18 +69,17 @@ function Porsche911({ setLoading }) {
           ambient={0.2}
           position={[1, 5, -1]}
         />
-      </AccumulativeShadows>
+      </AccumulativeShadows> */}
       <PerformanceMonitor onDecline={() => degrade(true)} />
       <Environment frames={degraded ? 1 : Infinity} resolution={256} background={false} blur={1}>
         <Lightformers />
       </Environment>
-      <CameraRig />
     </Canvas>
   );
 }
 
 function Porsche({ setLoading, ...props }) {
-  const { scene, nodes, materials } = useGLTF("/911-transformed.glb");
+  const { scene, nodes, materials } = useGLTF("/2023_porsche_911_gt3_rs_2.7_carrera_tribute_992.glb");
 
   // Actualiza el estado de carga al cargar el modelo
   useLayoutEffect(() => {
@@ -89,32 +88,11 @@ function Porsche({ setLoading, ...props }) {
       (node) =>
         node.isMesh && (node.receiveShadow = node.castShadow = true)
     );
-    applyProps(materials.rubber, {
-      color: "#222",
-      roughness: 0.6,
-      roughnessMap: null,
-      normalScale: [4, 4],
-    });
-    applyProps(materials.window, {
-      color: "black",
-      roughness: 0,
-      clearcoat: 0.1,
-    });
-    applyProps(materials.coat, {
-      envMapIntensity: 4,
-      roughness: 0.5,
-      metalness: 1,
-    });
-    applyProps(materials.paint, {
-      envMapIntensity: 2,
-      roughness: 0.45,
-      metalness: 0.8,
-      color: "#555",
-    });
   }, [nodes, materials, setLoading]);
 
   return <primitive object={scene} {...props} />;
 }
+
 
 function CameraRig({ v = new THREE.Vector3() }) {
   return useFrame((state) => {

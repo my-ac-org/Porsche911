@@ -21,7 +21,7 @@ const HeaderSection = () => {
 
             <hr className="border-t border-black w-full mb-10" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mb-20">
                 <div className="text-center md:text-left">
                     <p className="font-semibold text-lg">
                         The Porsche 911 is an icon of automotive engineering, built to deliver
