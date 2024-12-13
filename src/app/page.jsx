@@ -6,11 +6,11 @@ const Page = () => {
 
   return (
     <>
-      <div className='relative h-screen w-[99vw]'>
+      <div className='relative h-screen w-full'>
         <HeroPage />
       </div>
 
-      <div>
+      <div className='w-screen'>
         <AboutPage />
       </div>
     </>

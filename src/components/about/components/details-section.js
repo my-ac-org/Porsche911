@@ -3,7 +3,7 @@ import PorscheFront from '@/components/3dModels/porsche911Front';
 
 export default function DetailsSection() {
     return (
-        <div className="flex items-center space-y-8 bg-white pl-32 py-20 pr-20 w-full">
+        <div className="flex items-center space-y-8 bg-white pl-32 pr-20 py-0 w-full">
             {/* Aceleración */}
             <div className="flex flex-col gap-20 w-1/2">
 

@@ -17,7 +17,7 @@ export default function PorscheWithBackground() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="fixed h-screen w-screen">
+    <div className="fixed h-screen w-full">
       {/* Muestra el fondo solo si el modelo se ha cargado */}
       {!loading && <OrbitingCirclesDemo />}
 
