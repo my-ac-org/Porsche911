@@ -2,6 +2,7 @@ import React from "react";
 import HeaderSection from "./components/header-section";
 import DetailsSection from "./components/details-section";
 import CarrouselSection from "./components/carrousel-section";
+import CarDetails from "./components/carDetails-section";
 import VideoSection from "./components/video-section";
 
 const AboutPage = () => {
@@ -11,6 +12,7 @@ const AboutPage = () => {
             <DetailsSection />
             <VideoSection />
             <CarrouselSection />
+            <CarDetails />
         </div>
     );
 }

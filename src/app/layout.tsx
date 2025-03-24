@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/utils/navbar";
+import Footer from "@/components/utils/footer";
 
 export const metadata: Metadata = {
   title: "Porsche 911",
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
